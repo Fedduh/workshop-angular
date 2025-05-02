@@ -1,0 +1,35 @@
+<div>
+  <h2>
+    Profile <span *ngIf="profession === 'Teacher'" class="teacher-hat"></span>
+  </h2>
+
+  <p>First Name: {{ firstname }}</p>
+  <p>Last Name: {{ lastname }}</p>
+
+  <p>Full Name: {{ displayName }}</p>
+
+  <div class="profession-container">
+    <p *ngIf="isLoading">Loading...</p>
+    <p *ngIf="!isLoading && !profession">Profession is not fetched yet</p>
+    <p *ngIf="!isLoading && profession">Profession: {{ profession }}</p>
+
+    <button (click)="fetchProfession()">Get Random Profession</button>
+  </div>
+
+  <div class="hobbies-container">
+    <h3>Hobbies {{ hobbies.length ? "(" + hobbies.length + ")" : "" }}</h3>
+    <div *ngIf="hobbies && hobbies.length > 0">
+      <ul>
+        <li *ngFor="let hobby of hobbies">
+          {{ hobby }}
+          <span *ngIf="hobby !== 'Reading'">!</span>
+        </li>
+      </ul>
+      <button (click)="toggleSortHobbies()">Sort Hobbies</button>
+    </div>
+
+    <div *ngIf="!isLoadingHobbies && hobbies.length === 0">
+      <p>No hobbies found.</p>
+    </div>
+  </div>
+</div>
