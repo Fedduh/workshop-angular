@@ -51,6 +51,7 @@ export class ProfileComponent {
       next: (hobbies) => {
         this.hobbies = hobbies;
         this.isLoadingHobbies = false;
+        console.warn('Hobbies data changed');
       },
     });
   }
@@ -60,5 +61,6 @@ export class ProfileComponent {
       this.isAscending ? a.localeCompare(b) : b.localeCompare(a)
     );
     this.isAscending = !this.isAscending;
+    console.warn('Hobbies data changed');
   }
 }
